@@ -63,7 +63,7 @@ class AntColonyOptimization:
         probabilities = [
             (graph[current_node][node]['pheromone'] ** alpha) * ((1.0 / graph[current_node][node]['distance']) ** beta)
             for node in neighboring_nodes
-            if graph.nodes[node]['weight'] <= remaining_capacity  # Вычисляется вероятность выбора соседней вершины на основе формулы (1),  alpha отвечает за влияние феромонов, а beta за влияние расстояния на вероятность выбора следующей вершины.
+            if graph.nodes[node]['weight'] <= remaining_capacity  # Вычисляется вероятность выбора соседней вершины на основе формулы (1),  ALPHA отвечает за влияние феромонов, а beta за влияние расстояния на вероятность выбора следующей вершины.
         ]
         total = sum(probabilities)
         probabilities = [p / total for p in probabilities] if total > 0 else [1.0 / len(neighboring_nodes)] * len(neighboring_nodes)  # Если total больше 0 (есть доступные соседние вершины), то все вероятности в списке probabilities делятся на total для нормализации, что сумма вероятностей была равна 1.
